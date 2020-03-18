@@ -1,10 +1,10 @@
 exports.up = function(knex) {
     return knex.schema
-        .createTable('country', function (table) {
+        .createTable('car', function (table) {
             table.string('id');
-            table.string('name', 255);
-            table.string('code', 255);
-            table.string('iso2', 2);
+            table.string('brand', 255);
+            table.string('model', 255);
+            table.integer('year', 4);
             table.boolean('deleted');
             table.timestamp('createdAt');
             table.timestamp('updatedAt');
@@ -15,5 +15,5 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
     return knex.schema
-        .dropTable('country');
+        .dropTable('car');
 };
