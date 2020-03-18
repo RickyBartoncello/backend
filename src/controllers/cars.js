@@ -1,6 +1,6 @@
 const {Car} = include('models');
 
-class CarController {
+class CarsController {
     static async fetch(req, res, next) {
         try {
             const cars = await Car.find(req.query);
@@ -12,4 +12,4 @@ class CarController {
     }
 }
 
-module.exports = CarController;
+module.exports = CarsController;

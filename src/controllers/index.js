@@ -1,6 +1,8 @@
 module.exports = {
     CountriesController: require('./countries'),
-    CarController: require('./cars'),
+    CarsController: require('./cars'),
+    InstrumentsController: require('./instruments'),
+    QuotesController: require('./quotes'),
     StatesController: require('./states'),
     StatusController: require('./status')
 };
