@@ -1,8 +1,6 @@
-const {
-    CarController, StatesController
-} = include('controllers');
+const {CarController} = include('controllers');
 
 module.exports = router => {
-    router.get('/', CarController.fetch, StatesController.fetch);
+    router.get('/', CarController.fetch);
     return router;
 };
