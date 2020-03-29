@@ -9,11 +9,10 @@ const selectableProps = [
     'brand',
     'model',
     'year',
-    'deleted',
     'createdAt',
     'updatedAt',
     'deletedAt',
-    '__v'
+    'deleted'
 ];
 
 class CarModel extends createModel {
