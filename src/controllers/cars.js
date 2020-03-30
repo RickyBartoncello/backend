@@ -1,3 +1,6 @@
+const head = require('lodash/head');
+const isEmpty = require('lodash/isEmpty');
+
 const {Car} = include('models');
 
 class CarsController {
@@ -22,6 +25,20 @@ class CarsController {
                 limit: process.env.PAGE_SIZE
             });
         } catch(err) {
+            next(err);
+        }
+    }
+    static async fetchOne(req, res, next){
+        try{
+            const car = await Car.findById(req.params.id);
+
+            if(isEmpty(car)){
+                return res.status(404).send({code: 'CAR_NOT_FOUND'});
+
+            }
+
+            res.send(head(car));
+        }catch(err){
             next(err);
         }
     }

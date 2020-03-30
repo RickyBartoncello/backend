@@ -1,4 +1,4 @@
-require('./global');
+srequire('./global');
 const App = require('./app');
 
 const app = new App();

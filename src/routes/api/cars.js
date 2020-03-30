@@ -6,6 +6,7 @@ module.exports = router => {
         .post(CarsController.create);
     router.route('/:id')
         .put(CarsController.save)
-        .delete(CarsController.delete);
+        .delete(CarsController.delete)
+        .get(CarsController.fetchOne);
     return router;
 };
