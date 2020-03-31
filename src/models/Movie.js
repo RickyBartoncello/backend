@@ -2,19 +2,20 @@ const toNumber = require('lodash/toNumber');
 const {PAGE_SIZE} = process.env;
 const createModel = include('helpers/modelCreate');
 
-const name = 'Quote';
-const tableName = 'quote';
+const name = 'Movie';
+const tableName = 'movie';
 
 const selectableProps = [
-    'text',
-    'author',
+    'title',
+    'genres',
+    'year',
     'createdAt',
     'updatedAt',
     'deletedAt',
-    '__v'
+    'deleted'
 ];
 
-class QuoteModel extends createModel {
+class MovieModel extends createModel {
     constructor(props) {
         super({
             ...props,
@@ -23,7 +24,6 @@ class QuoteModel extends createModel {
             selectableProps
         });
     }
-
     find({
         skip, filter = {}
     }){
@@ -36,4 +36,4 @@ class QuoteModel extends createModel {
     }
 }
 
-module.exports = knex => new QuoteModel({knex});
+module.exports = knex => new MovieModel({knex});

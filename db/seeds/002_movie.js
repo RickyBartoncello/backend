@@ -1,12 +1,12 @@
 require('../../src/global');
 
-const {Quote} = include('/models');
-const quotes = require('./quotes.json');
+const {Movie} = include('/models');
+const movies = require('./movies.json');
 exports.seed = async knex => {
-    await knex(Quote.tableName).del();
+    await knex(Movie.tableName).del();
     try {
         // eslint-disable-next-line lodash/prefer-lodash-method
-        return await Promise.all(quotes.map(quote => Quote.insertOne(quote))) ;
+        return await Promise.all(movies.map(movie => Movie.insertOne(movie))) ;
     } catch(err) {
         console.log('err: ', err);
     }

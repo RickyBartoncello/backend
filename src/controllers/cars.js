@@ -19,6 +19,7 @@ class CarsController {
         try {
             const cars = await Car.find(req.query);
             const total = await Car.countDocuments();
+            console.log(total);
             res.send({
                 cars,
                 total: 100,

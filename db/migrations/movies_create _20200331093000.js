@@ -1,18 +1,18 @@
 exports.up = function(knex) {
     return knex.schema
-        .createTable('quote', function (table) {
+        .createTable('movie', function (table) {
             table.string('id');
-            table.text('text');
-            table.string('author', 255);
+            table.string('title', 100);
+            table.string('genres', 100);
+            table.integer('year', 4);
             table.boolean('deleted');
             table.timestamp('createdAt');
             table.timestamp('updatedAt');
             table.timestamp('deletedAt');
-            table.integer('__v');
         });
 };
 
 exports.down = function(knex) {
     return knex.schema
-        .dropTable('quote');
+        .dropTable('movie');
 };
