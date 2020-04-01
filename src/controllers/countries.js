@@ -65,5 +65,5 @@ class CountriesController {
             next(err);
         }
     }
-
+}
 module.exports = CountriesController;

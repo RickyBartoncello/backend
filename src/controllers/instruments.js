@@ -64,6 +64,7 @@ class InstrumentsController {
         } catch(err){
             next(err);
         }
+    }
 }
 
 module.exports = InstrumentsController;
