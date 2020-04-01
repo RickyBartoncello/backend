@@ -6,13 +6,15 @@ const name = 'Movie';
 const tableName = 'movie';
 
 const selectableProps = [
+    'id',
     'title',
     'genres',
     'year',
     'createdAt',
     'updatedAt',
     'deletedAt',
-    'deleted'
+    'deleted',
+    '__v'
 ];
 
 class MovieModel extends createModel {

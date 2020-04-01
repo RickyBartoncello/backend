@@ -6,6 +6,7 @@ const name = 'Country';
 const tableName = 'country';
 
 const selectableProps = [
+    'id',
     'name',
     'code',
     'iso2',

@@ -6,6 +6,7 @@ class CountriesController {
             const countries = await Country.find(req.query);
             const total = await Country.countDocuments();
             console.log(total);
+
             res.send({
                 countries,
                 total: 243,

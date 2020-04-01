@@ -6,13 +6,15 @@ const name = 'Car';
 const tableName = 'car';
 
 const selectableProps = [
+    'id',
     'brand',
     'model',
     'year',
     'createdAt',
     'updatedAt',
     'deletedAt',
-    'deleted'
+    'deleted',
+    '__v'
 ];
 
 class CarModel extends createModel {

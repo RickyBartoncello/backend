@@ -6,6 +6,7 @@ class InstrumentsController {
             const instruments = await Instrument.find(req.query);
             const total = await Instrument.countDocuments();
             console.log(total);
+
             res.send({
                 instruments,
                 total: 127,

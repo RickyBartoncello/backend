@@ -6,6 +6,7 @@ const name = 'Instrument';
 const tableName = 'instrument';
 
 const selectableProps = [
+    'id',
     'hexcode',
     'family',
     'instrument',
