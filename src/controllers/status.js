@@ -1,31 +1,37 @@
-const {StatusService} = require('../services');
-const pkg = require('../../package');
+const every = require('lodash/every');
+const concat = require('lodash/concat');
 
-class StatusController {
-    static ping(req, res, next) {
-        try {
-            res.send({version: pkg.version});
-        } catch (err) {
-            next(err);
-        }
+const pkg = root_path('package.json');
+
+/**
+ * Creates the status object
+ * @param {Array<{status}>} deps Required dependencies to work.
+ * @param {Array<{status}>} optionalDeps Optional dependencies to work.
+ * @returns {{name, status: string, deps}} Returns the status of this app.
+ */
+const generateStatus = (deps, optionalDeps = []) => ({
+    deps: concat(deps, optionalDeps),
+    name: pkg.name,
+    status: every(deps, ({status: 'ok'}))
+        ? every(optionalDeps, ({status: 'ok'})) ? 'ok' : 'degraded'
+        : 'down'
+});
+
+class StatusService {
+    static getStatus() {
+        return generateStatus([StatusService.getMongoDBStatus()]);
     }
 
-    static getStatus(req, res, next) {
-        try {
-            res.send(StatusService.getStatus());
-        } catch (err) {
-            next(err);
-        }
+    static getHealth() {
+        return StatusService.getMongoDBStatus();
     }
 
-    static async getHealth(req, res, next) {
-        try {
-            const status = await StatusService.getHealth();
-            res.send(status);
-        } catch (err) {
-            next(err);
-        }
+    static getMongoDBStatus() {
+        return {
+            name: 'PostgreSQL',
+            status: process.env.database || 'down'
+        };
     }
 }
 
-module.exports = StatusController;
+module.exports = StatusService;
