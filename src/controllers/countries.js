@@ -1,3 +1,6 @@
+const head = require('lodash/head');
+const isEmpty = require('lodash/isEmpty');
+
 const { Country } = include('models');
 
 class CountriesController {

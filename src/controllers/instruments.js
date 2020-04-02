@@ -1,4 +1,8 @@
+const head = require('lodash/head');
+const isEmpty = require('lodash/isEmpty');
+
 const {Instrument} = include('models');
+
 
 class InstrumentsController {
     static async create(req, res, next) {
