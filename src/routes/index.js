@@ -1,7 +1,6 @@
 const {Router} = require('express');
 const {errorHandler} = require('./middleWares');
 
-const {StatusController} = include('controllers');
 const Logger = include('helpers/logger');
 /**
  * @class Routes
@@ -16,9 +15,6 @@ const Logger = include('helpers/logger');
  */
 class Routes {
     static configure(app) {
-        app.get('/ping', StatusController.ping);
-        app.get('/ready', StatusController.getStatus);
-        app.get('/health', StatusController.getHealth);
         app.use('/api', /* authenticate, */ require('./api')(Router()));
 
         Logger.info('Loading public-api...');
