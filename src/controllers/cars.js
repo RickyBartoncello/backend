@@ -22,7 +22,7 @@ class CarsController {
             console.log(total);
             res.send({
                 cars,
-                total: 100,
+                total: 120,
                 limit: process.env.PAGE_SIZE
             });
         } catch(err) {

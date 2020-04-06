@@ -3,7 +3,6 @@ const isEmpty = require('lodash/isEmpty');
 
 const {Instrument} = include('models');
 
-
 class InstrumentsController {
     static async create(req, res, next) {
         try {
@@ -24,7 +23,7 @@ class InstrumentsController {
 
             res.send({
                 instruments,
-                total: 127,
+                total: 147,
                 limit: process.env.PAGE_SIZE
             });
         } catch(err) {

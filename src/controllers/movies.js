@@ -24,7 +24,7 @@ class MoviesController {
 
             res.send({
                 movies,
-                total: 100,
+                total: 120,
                 limit: process.env.PAGE_SIZE
             });
         } catch(err) {
