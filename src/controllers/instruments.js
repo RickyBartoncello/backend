@@ -57,7 +57,7 @@ class InstrumentsController {
     }
     static async delete(req, res, next){
         try{
-            const result = await Instrument.deletedOne({id: req.params.id});
+            const result = await Instrument.deletedOne(req.params.id);
             res.send({
                 success: true,
                 result

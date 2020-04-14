@@ -58,7 +58,7 @@ class MoviesController {
     }
     static async delete(req, res, next){
         try{
-            const result = await Movie.deletedOne({id: req.params.id});
+            const result = await Movie.deletedOne(req.params.id);
             res.send({
                 success: true,
                 result

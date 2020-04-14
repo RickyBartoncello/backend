@@ -9,6 +9,7 @@ const app = new App();
 app.test();
 const request = require('supertest')(app.app);
 Sinon.stub(Logger, 'info').returns('');
+
 module.exports = {
     request,
     Sinon

@@ -2,7 +2,7 @@ exports.up = function(knex) {
     return knex.schema
         .createTable('instrument', function (table) {
             table.string('id');
-            table.string('hexcode', 255);
+            table.integer('hexcode', 255);
             table.string('family', 255);
             table.string('instrument', 255);
             table.boolean('deleted');

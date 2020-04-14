@@ -57,7 +57,7 @@ class CountriesController {
     }
     static async delete(req, res, next) {
         try {
-            const result = await Country.deletedOne({ id: req.params.id });
+            const result = await Country.deletedOne(req.params.id);
             res.send({
                 success: true,
                 result
