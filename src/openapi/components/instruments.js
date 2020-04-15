@@ -2,20 +2,20 @@ module.exports = {
     type: 'object',
     properties: {
         id: {
-            description: 'id of car',
+            description: 'id of Instrument',
             type: 'string',
             format: 'uuid'
         },
-        brand: {
-            description: 'Brand.',
+        hexcode: {
+            description: 'Hexcode.',
             type: 'string'
         },
-        model: {
-            description: 'Model.',
+        family: {
+            description: 'family.',
             type: 'string'
         },
-        year: {
-            description: 'Year.',
+        instrument: {
+            description: 'Instrument.',
             type: 'integer'
         },
         deleted: {
@@ -25,9 +25,9 @@ module.exports = {
     },
     required: [
         'id',
-        'brand',
-        'model',
-        'year',
+        'hexcode',
+        'family',
+        'instrument',
         'deleted'
     ]
 };

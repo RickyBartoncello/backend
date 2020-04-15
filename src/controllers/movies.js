@@ -19,13 +19,12 @@ class MoviesController {
     static async fetch(req, res, next) {
         try {
             const movies = await Movie.find(req.query);
-            const total = await Movie.countDocuments();
-            console.log(total);
+            const [{count}] = await Movie.countDocuments();
 
             res.send({
                 movies,
-                total: 120,
-                limit: process.env.PAGE_SIZE
+                total: count || 120,
+                limit: parseInt(process.env.PAGE_SIZE)
             });
         } catch(err) {
             next(err);
