@@ -20,14 +20,14 @@ module.exports = {
                                                     type: 'string',
                                                     format: 'uuid'
                                                 },
-                                                brand: { type: 'string' },
-                                                model: { type: 'string' },
-                                                year: { type: 'string' }
+                                                brand: {type: 'string'},
+                                                model: {type: 'string'},
+                                                year: {type: 'integer'}
                                             }
                                         }
                                     },
-                                    total: { type: 'integer' },
-                                    limit: { type: 'integer' }
+                                    total: {type: 'integer'},
+                                    limit: {type: 'integer'}
                                 }
                             }
                         }
@@ -35,7 +35,7 @@ module.exports = {
                 },
                 default: {
                     description: 'Error',
-                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
                 }
             }
         },
@@ -59,14 +59,14 @@ module.exports = {
                                                     type: 'string',
                                                     format: 'uuid'
                                                 },
-                                                brand: { type: 'string' },
-                                                model: { type: 'string' },
-                                                year: { type: 'string' }
+                                                brand: {type: 'string'},
+                                                model: {type: 'string'},
+                                                year: {type: 'integer'}
                                             }
                                         }
                                     },
-                                    total: { type: 'integer' },
-                                    limit: { type: 'integer' }
+                                    total: {type: 'integer'},
+                                    limit: {type: 'integer'}
                                 }
                             }
                         }
@@ -74,10 +74,11 @@ module.exports = {
                 },
                 default: {
                     description: 'Error',
-                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
                 }
             }
         },
+
         post: {
             security: [],
             summary: 'List Cars',
@@ -98,22 +99,18 @@ module.exports = {
                                                     type: 'string',
                                                     format: 'uuid'
                                                 },
-                                                brand: { type: 'string' },
-                                                model: { type: 'string' },
-                                                year: { type: 'string' }
+                                                brand: {type: 'string'},
+                                                model: {type: 'string'},
+                                                year: {type: 'integer'}
                                             }
                                         }
                                     },
-                                    total: { type: 'integer' },
-                                    limit: { type: 'integer' }
+                                    total: {type: 'integer'},
+                                    limit: {type: 'integer'}
                                 }
                             }
                         }
                     }
-                },
-                default: {
-                    description: 'Error',
-                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
                 }
             }
         },
@@ -137,22 +134,18 @@ module.exports = {
                                                     type: 'string',
                                                     format: 'uuid'
                                                 },
-                                                brand: { type: 'string' },
-                                                model: { type: 'string' },
-                                                year: { type: 'string' }
+                                                brand: {type: 'string'},
+                                                model: {type: 'string'},
+                                                year: {type: 'integer'}
                                             }
                                         }
                                     },
-                                    total: { type: 'integer' },
-                                    limit: { type: 'integer' }
+                                    total: {type: 'integer'},
+                                    limit: {type: 'integer'}
                                 }
                             }
                         }
                     }
-                },
-                default: {
-                    description: 'Error',
-                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
                 }
             }
         }

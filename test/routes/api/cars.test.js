@@ -16,15 +16,15 @@ describe('api/cars', () => {
         mockResult = [
             {
                 id: '00000000-0000-0000-0000-000000000000',
-                name: 'fake-name'
+                brand: 'fake-brand'
             },
             {
                 id: '00000000-0000-0000-0000-000000000001',
-                name: 'fake-name-2'
+                brand: 'fake-brand-2'
             }
         ];
         modelFunction = Sinon.stub(Car, 'find').returns(Promise.resolve(mockResult));
-        modelFunction2 = Sinon.stub(Car, 'countDocuments').returns(Promise.resolve([{count: 33}]));
+        modelFunction2 = Sinon.stub(Car, 'countDocuments').returns(Promise.resolve([{count: 110}]));
     });
 
     afterEach(() => {

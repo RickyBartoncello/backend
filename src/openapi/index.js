@@ -1,4 +1,4 @@
-const components = require('./');
+const components = require('./components');
 const publicApi = require('./publicApi');
 const api = require('./api');
 const pkg = root_path('package.json');

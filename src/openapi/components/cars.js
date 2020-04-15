@@ -12,17 +12,17 @@ module.exports = {
                     description: 'Brand.',
                     type: 'string'
                 },
-                code: {
-                    description: 'Code.',
+                model: {
+                    description: 'Model.',
                     type: 'string'
                 },
                 year: {
                     description: 'Year.',
-                    type: 'string'
+                    type: 'integer'
                 },
                 deleted: {
                     type: 'boolean',
-                    description: 'If the car its deleted from the current APP'
+                    description: 'If the user its deleted from the current APP'
                 }
             },
             required: [
@@ -59,27 +59,6 @@ module.exports = {
                     }
                 }
             }
-        },
-        Error: {
-            type: 'object',
-            required: [
-                'code',
-                'message'
-            ],
-            properties: {
-                code: {
-                    type: 'integer',
-                    format: 'int32'
-                },
-                message: {type: 'string'}
-            }
-        }
-    },
-    securitySchemes: {
-        bearerAuth: {
-            type: 'http',
-            scheme: 'bearer',
-            bearerFormat: 'JWT'
         }
     }
 };
