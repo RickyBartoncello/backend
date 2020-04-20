@@ -17,12 +17,19 @@ class CountriesController {
     }
     static async fetch(req, res, next) {
         try {
-            const countries = await Country.find(req.query);
-            const [{count}] = await Country.countDocuments();
+            console.log(req.query);
+            const {
+                skip, ...filter
+            } = req.query;
 
+            const countries = await Country.find({
+                skip,
+                filter
+            });
+            // const [{count}] = await Country.countDocuments();
             res.send({
                 countries,
-                total: count || 243,
+                total: 243,
                 limit: parseInt(process.env.PAGE_SIZE)
             });
         } catch (err) {

@@ -1,8 +1,6 @@
 const {Router} = require('express');
-const get = require('lodash/get');
 const {errorHandler} = require('./middleWares');
 
-const {StatusController} = include('controllers');
 const Logger = include('helpers/logger');
 /**
  * @class Routes
@@ -15,20 +13,13 @@ const Logger = include('helpers/logger');
  * <b> /api </b> main link, this manage all functions of be </br>
  * <b> * </b> returns error page when not matching url can be found </br>
  */
-const localRoute = route => {
-    route.get('/ping', StatusController.ping);
-    route.get('/ready', StatusController.getStatud);
-    route.get('/health', StatusController.getHealth);
-    route.get('/swagger', (_, res) => res.send(get(include('openapi'), 'components')));
-    return route;
-};
-
 class Routes {
     static configure(app) {
-        app.use('/', localRoute(Router()));
         app.use('/api', /* authenticate, */ require('./api')(Router()));
+
         Logger.info('Loading public-api...');
         app.use('/public-api', require('./public-api')(Router()));
+
         app.use(errorHandler);
     }
 }

@@ -12,6 +12,14 @@ module.exports = {
                         pattern: '^[A-Z]{2}$'
                     },
                     description: 'Numeric ID of user to get'
+                }, {
+                    in: 'query',
+                    name: 'skip',
+                    schema: {
+                        type: 'integer',
+                        default: 0
+                    },
+                    description: 'Numeric ID of user to get'
                 }
             ],
             responses: {
@@ -20,17 +28,23 @@ module.exports = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'array',
-                                items: {
-                                    type: 'object',
-                                    properties: {
-                                        id: {
-                                            type: 'string',
-                                            format: 'uuid'
-                                        },
-                                        name: { type: 'string' }
+                                type: 'object',
+                                properties: {
+                                    countries: {
+                                        type: 'array',
+                                        items: {
+                                            type: 'object',
+                                            properties: {
+                                                id: {
+                                                    type: 'string',
+                                                    format: 'uuid'
+                                                },
+                                                name: { type: 'string' }
+                                            }
+                                        }
                                     }
                                 }
+
                             }
                         }
                     }
