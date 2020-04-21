@@ -6,12 +6,17 @@ module.exports = {
             parameters: [
                 {
                     in: 'query',
+                    name: 'name',
+                    schema: {type: 'string'},
+                    description: 'Name of country '
+                }, {
+                    in: 'query',
                     name: 'code',
                     schema: {
                         type: 'string',
                         pattern: '^[A-Z]{2}$'
                     },
-                    description: 'Numeric ID of user to get'
+                    description: 'Code of country'
                 }, {
                     in: 'query',
                     name: 'skip',
