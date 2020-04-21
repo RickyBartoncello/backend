@@ -2,10 +2,36 @@ module.exports = {
     '/api/movies': {
         get: {
             security: [],
-            summary: 'List Movies',
+            summary: 'List Movie',
+            parameters: [
+                {
+                    in: 'query',
+                    name: 'title',
+                    schema: { type: 'string' },
+                    description: 'Title of movie '
+                }, {
+                    in: 'query',
+                    name: 'genres',
+                    schema: {type: 'string'},
+                    description: 'Genres of movie'
+                }, {
+                    in: 'query',
+                    name: 'year',
+                    schema: {type: 'integer'},
+                    description: 'Year of movie'
+                }, {
+                    in: 'query',
+                    name: 'skip',
+                    schema: {
+                        type: 'integer',
+                        default: 0
+                    },
+                    description: 'Numeric ID of user to get'
+                }
+            ],
             responses: {
                 200: {
-                    description: 'table of movies',
+                    description: 'list of movies',
                     content: {
                         'application/json': {
                             schema: {
@@ -20,132 +46,19 @@ module.exports = {
                                                     type: 'string',
                                                     format: 'uuid'
                                                 },
-                                                title: {type: 'string'},
-                                                genres: {type: 'string'},
-                                                year: {type: 'integer'}
+                                                name: { type: 'string' }
                                             }
                                         }
-                                    },
-                                    total: {type: 'integer'},
-                                    limit: {type: 'integer'}
+                                    }
                                 }
-                            }
-                        }
-                    }
-                },
-                default: {
-                    description: 'Error',
-                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
-                }
-            }
-        },
-        put: {
-            security: [],
-            summary: 'List Movies',
-            responses: {
-                200: {
-                    description: 'table of movies',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'object',
-                                properties: {
-                                    movies: {
-                                        type: 'array',
-                                        items: {
-                                            type: 'object',
-                                            properties: {
-                                                id: {
-                                                    type: 'string',
-                                                    format: 'uuid'
-                                                },
-                                                title: {type: 'string'},
-                                                genres: {type: 'string'},
-                                                year: {type: 'integer'}
-                                            }
-                                        }
-                                    },
-                                    total: {type: 'integer'},
-                                    limit: {type: 'integer'}
-                                }
-                            }
-                        }
-                    }
-                },
-                default: {
-                    description: 'Error',
-                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
-                }
-            }
-        },
 
-        post: {
-            security: [],
-            summary: 'List Movies',
-            responses: {
-                200: {
-                    description: 'table of movies',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'object',
-                                properties: {
-                                    movies: {
-                                        type: 'array',
-                                        items: {
-                                            type: 'object',
-                                            properties: {
-                                                id: {
-                                                    type: 'string',
-                                                    format: 'uuid'
-                                                },
-                                                title: {type: 'string'},
-                                                genres: {type: 'string'},
-                                                year: {type: 'integer'}
-                                            }
-                                        }
-                                    },
-                                    total: {type: 'integer'},
-                                    limit: {type: 'integer'}
-                                }
                             }
                         }
                     }
-                }
-            }
-        },
-        delete: {
-            security: [],
-            summary: 'List Movies',
-            responses: {
-                200: {
-                    description: 'table of movies',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'object',
-                                properties: {
-                                    movies: {
-                                        type: 'array',
-                                        items: {
-                                            type: 'object',
-                                            properties: {
-                                                id: {
-                                                    type: 'string',
-                                                    format: 'uuid'
-                                                },
-                                                title: {type: 'string'},
-                                                genres: {type: 'string'},
-                                                year: {type: 'integer'}
-                                            }
-                                        }
-                                    },
-                                    total: {type: 'integer'},
-                                    limit: {type: 'integer'}
-                                }
-                            }
-                        }
-                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
                 }
             }
         }

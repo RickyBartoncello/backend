@@ -17,13 +17,18 @@ class MoviesController {
         }
     }
     static async fetch(req, res, next) {
-        try {
-            const movies = await Movie.find(req.query);
-            const [{count}] = await Movie.countDocuments();
-
+        try {console.log(req.query);
+            const {
+                skip, ...filter
+            } = req.query;
+            const movies = await Movie.find({
+                skip,
+                filter
+            });
+            // const [{count}] = await Country.countDocuments();
             res.send({
                 movies,
-                total: count || 120,
+                total: 243,
                 limit: parseInt(process.env.PAGE_SIZE)
             });
         } catch(err) {
