@@ -21,7 +21,6 @@ class CountriesController {
             const {
                 skip, ...filter
             } = req.query;
-
             const countries = await Country.find({
                 skip,
                 filter

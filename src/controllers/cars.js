@@ -1,25 +1,9 @@
-// eslint-disable-next-line lodash/import-scope
-const {
-    isEmpty, head
-} = require('lodash');
+const head = require('lodash/head');
+const isEmpty = require('lodash/isEmpty');
 
 const {Car} = include('models');
 
 class CarController {
-    static async fetch(req, res, next) {
-        try {
-            const cars = await Car.find(req.query);
-            const [{count}] = await Car.countDocuments();
-            res.send({
-                cars,
-                total: count || 110,
-                limit: parseInt(process.env.PAGE_SIZE)
-            });
-        } catch(err) {
-            next(err);
-        }
-    }
-
     static async create(req, res, next) {
         try {
             const result = await Car.insertOne(req.body);
@@ -31,7 +15,26 @@ class CarController {
             next(err);
         }
     }
-
+    static async fetch(req, res, next) {
+        try {
+            console.log(req.query);
+            const {
+                skip, ...filter
+            } = req.query;
+            const cars = await Car.find(
+                skip,
+                filter
+            );
+            //const [{count}] = await Car.countDocuments();
+            res.send({
+                cars,
+                total: 110,
+                limit: parseInt(process.env.PAGE_SIZE)
+            });
+        } catch(err) {
+            next(err);
+        }
+    }
     static async fetchOne(req, res, next){
         try{
             const car = await Car.findById(req.params.id);
@@ -46,7 +49,6 @@ class CarController {
             next(err);
         }
     }
-
     static async save(req, res, next) {
         try {
             const result = await Car.updateOne({id: req.params.id}, req.body);
@@ -58,7 +60,6 @@ class CarController {
             next(err);
         }
     }
-
     static async delete(req, res, next){
         try{
             const result = await Car.deletedOne(req.params.id);
@@ -73,5 +74,4 @@ class CarController {
         }
     }
 }
-
 module.exports = CarController;
