@@ -14,8 +14,7 @@ module.exports = {
                     name: 'model',
                     schema: { type: 'string' },
                     description: 'Model of car'
-                },
-                {
+                }, {
                     in: 'query',
                     name: 'year',
                     schema: { type: 'integer' },

@@ -7,7 +7,6 @@ class MoviesController {
     static async create(req, res, next) {
         try {
             const result = await Movie.insertOne(req.body);
-            console.log(req.body);
             res.send({
                 success: true,
                 result
@@ -17,7 +16,7 @@ class MoviesController {
         }
     }
     static async fetch(req, res, next) {
-        try {console.log(req.query);
+        try {
             const {
                 skip, ...filter
             } = req.query;
@@ -28,7 +27,7 @@ class MoviesController {
             // const [{count}] = await Country.countDocuments();
             res.send({
                 movies,
-                total: 243,
+                total: 120,
                 limit: parseInt(process.env.PAGE_SIZE)
             });
         } catch(err) {

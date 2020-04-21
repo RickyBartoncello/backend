@@ -20,10 +20,10 @@ class InstrumentsController {
             const {
                 skip, ...filter
             } = req.query;
-            const instruments = await Instrument.find(
+            const instruments = await Instrument.find({
                 skip,
                 filter
-            );
+            });
             //const [{count}] = await Instrument.countDocuments();
             res.send({
                 instruments,
