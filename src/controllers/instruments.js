@@ -17,12 +17,17 @@ class InstrumentsController {
     }
     static async fetch(req, res, next) {
         try {
-            const instruments = await Instrument.find(req.query);
-            const [{count}] = await Instrument.countDocuments();
-
+            const {
+                skip, ...filter
+            } = req.query;
+            const instruments = await Instrument.find(
+                skip,
+                filter
+            );
+            //const [{count}] = await Instrument.countDocuments();
             res.send({
                 instruments,
-                total: count || 150,
+                total: 150,
                 limit: parseInt(process.env.PAGE_SIZE)
             });
         } catch(err) {

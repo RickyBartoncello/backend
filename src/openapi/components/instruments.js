@@ -11,12 +11,12 @@ module.exports = {
             type: 'string'
         },
         family: {
-            description: 'family.',
+            description: 'Family.',
             type: 'string'
         },
         instrument: {
             description: 'Instrument.',
-            type: 'integer'
+            type: 'string'
         },
         deleted: {
             type: 'boolean',
