@@ -7,7 +7,7 @@ module.exports = {
                 {
                     in: 'query',
                     name: 'name',
-                    schema: {type: 'string'},
+                    schema: { type: 'string' },
                     description: 'Name of country '
                 }, {
                     in: 'query',
@@ -37,18 +37,48 @@ module.exports = {
                                 properties: {
                                     countries: {
                                         type: 'array',
-                                        items: {
-                                            type: 'object',
-                                            properties: {
-                                                id: {
-                                                    type: 'string',
-                                                    format: 'uuid'
-                                                },
-                                                name: { type: 'string' }
-                                            }
-                                        }
+                                        items: { $ref: '#/components/schemas/Country' }
                                     }
                                 }
+
+                            }
+                        }
+                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+                }
+            }
+        }
+    },
+    '/api/countries/{id}': {
+        put: {
+            security: [],
+            summary: 'List Countries',
+            parameters: [
+                {
+                    in: 'path',
+                    name: 'id',
+                    schema: {
+                        type: 'string',
+                        format: 'uuid'
+                    },
+                    description: 'Name of country '
+                }
+            ],
+            requestBody: {
+                content: { 'application/json': { schema: { $ref: '#/components/schemas/Country' } } },
+                required: true
+            },
+            responses: {
+                200: {
+                    description: 'list of countries',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                type: 'object',
+                                properties: {}
 
                             }
                         }
