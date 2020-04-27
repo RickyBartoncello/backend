@@ -40,7 +40,6 @@ module.exports = {
                                         items: { $ref: '#/components/schemas/Country' }
                                     }
                                 }
-
                             }
                         }
                     }
