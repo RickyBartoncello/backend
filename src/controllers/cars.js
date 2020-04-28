@@ -36,7 +36,7 @@ class CarController {
     }
     static async fetchOne(req, res, next) {
         try {
-            const car = await Car.findById(req.params.id);
+            const car = await Car.findById({id: req.params.id});
 
             if (isEmpty(car)) {
                 return res.status(404).send({ code: 'CAR_NOT_FOUND' });
@@ -62,12 +62,7 @@ class CarController {
     static async delete(req, res, next) {
         try {
             const result = await Car.deletedOne(req.params.id);
-            res.send({
-                success: true,
-                result
-
-            });
-
+            res.send(result);
         } catch (err) {
             next(err);
         }

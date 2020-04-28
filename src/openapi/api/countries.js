@@ -1,35 +1,22 @@
 module.exports = {
-    '/api/countries': {
+    '/api/countries': {//si queremos poner un id se pone '/api/countries/{id}'
         get: {
             security: [],
             summary: 'List Countries',
             parameters: [
                 {
                     in: 'query',
-                    name: 'name',
-                    schema: { type: 'string' },
-                    description: 'Name of country '
-                }, {
-                    in: 'query',
                     name: 'code',
                     schema: {
                         type: 'string',
                         pattern: '^[A-Z]{2}$'
                     },
-                    description: 'Code of country'
-                }, {
-                    in: 'query',
-                    name: 'skip',
-                    schema: {
-                        type: 'integer',
-                        default: 0
-                    },
-                    description: 'Numeric ID of user to get'
+                    description: 'codigo del pais solicitado'
                 }
             ],
             responses: {
                 200: {
-                    description: 'list of countries',
+                    description: 'login success',
                     content: {
                         'application/json': {
                             schema: {
@@ -37,8 +24,10 @@ module.exports = {
                                 properties: {
                                     countries: {
                                         type: 'array',
-                                        items: { $ref: '#/components/schemas/Country' }
-                                    }
+                                        items: {$ref: '#/components/schemas/Country'}
+                                    },
+                                    total: {type: 'integer'},
+                                    limit: {type: 'integer'}
                                 }
                             }
                         }
@@ -46,46 +35,111 @@ module.exports = {
                 },
                 default: {
                     description: 'Error',
-                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
                 }
             }
-        }
-    },
-    '/api/countries/{id}': {
-        put: {
+        },
+
+        post: {
             security: [],
-            summary: 'List Countries',
-            parameters: [
-                {
-                    in: 'path',
-                    name: 'id',
-                    schema: {
-                        type: 'string',
-                        format: 'uuid'
-                    },
-                    description: 'Name of country '
-                }
-            ],
-            requestBody: {
-                content: { 'application/json': { schema: { $ref: '#/components/schemas/Country' } } },
-                required: true
+            summary: 'crate country',
+            requestBody:{
+                description: 'new country',
+                content: {'application/json': {schema: {$ref: '#/components/schemas/Country'}}}
             },
             responses: {
                 200: {
-                    description: 'list of countries',
+                    description: 'login success',
                     content: {
                         'application/json': {
                             schema: {
                                 type: 'object',
                                 properties: {}
-
                             }
                         }
                     }
                 },
                 default: {
                     description: 'Error',
-                    content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
+                }
+
+            }
+        }
+    },
+
+    '/api/countries/{id}': {
+        put: {
+            security: [],
+            summary: 'user id',
+            parameters: [{$ref: '#/components/parameters/Path'}],
+            requestBody: {
+                description: 'modify',
+                content: {'application/json': {schema: {$ref: '#/components/schemas/Country'}}}
+            },
+            responses: {
+                200: {
+                    description: 'login success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                type: 'object',
+                                properties: {}
+                            }
+                        }
+                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
+                }
+
+            }
+        },
+
+        delete: {
+            security: [],
+            summary: 'user id',
+            parameters: [{$ref: '#/components/parameters/Path'}],
+            responses: {
+                200: {
+                    description: 'login success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                type: 'object',
+                                properties: {}
+                            }
+                        }
+                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
+                }
+
+            }
+        },
+
+        get: {
+            security: [],
+            summary: 'user id',
+            parameters: [{$ref: '#/components/parameters/Path'}],
+            responses: {
+                200:{
+                    description: 'one countrie',
+                    content:{
+                        'application/json':{
+                            schema:{
+                                type: 'object',
+                                properties:{}
+                            }
+                        }
+                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
                 }
             }
         }
