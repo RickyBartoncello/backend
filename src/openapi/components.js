@@ -144,7 +144,7 @@ module.exports = {
     parameters: {
         Path: {
             name: 'id',
-            in: 'query',
+            in: 'path',
             required: true,
             schema: {
                 type: 'string',

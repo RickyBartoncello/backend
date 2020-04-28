@@ -27,7 +27,7 @@ class CarController {
             //const [{count}] = await Car.countDocuments();
             res.send({
                 cars,
-                total: 110,
+                total: 130,
                 limit: parseInt(process.env.PAGE_SIZE)
             });
         } catch (err) {
@@ -36,7 +36,7 @@ class CarController {
     }
     static async fetchOne(req, res, next) {
         try {
-            const car = await Car.findById({id: req.params.id});
+            const car = await Car.findById(req.params.id);
 
             if (isEmpty(car)) {
                 return res.status(404).send({ code: 'CAR_NOT_FOUND' });
@@ -50,7 +50,7 @@ class CarController {
     }
     static async save(req, res, next) {
         try {
-            const result = await Car.updateOne({ id: req.params.id }, req.body);
+            const result = await Car.updateOne(req.params, req.body);
             res.send({
                 success: true,
                 result
@@ -62,9 +62,12 @@ class CarController {
     static async delete(req, res, next) {
         try {
             const result = await Car.deletedOne(req.params.id);
-            res.send(result);
-        } catch (err) {
-            next(err);
+            res.send({
+                success:true,
+                result
+            });
+        } catch (error) {
+            next(error);
         }
     }
 }

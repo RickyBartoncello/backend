@@ -74,7 +74,7 @@ module.exports = {
             }
         }
     },
-    '/api/cars/{id]': {
+    '/api/cars/{id}': {
         get: {
             security: [],
             summary: 'List Cars for ID',
@@ -84,8 +84,10 @@ module.exports = {
                     description: 'Car for ID',
                     content: {
                         'application/json': {
-                            type: 'object',
-                            properties: {}
+                            schema: {
+                                type: 'object',
+                                properties: {}
+                            }
                         }
                     }
                 },
@@ -97,7 +99,7 @@ module.exports = {
         },
         put: {
             security: [],
-            parameters: [{$ref: '#/components/parameters/Path'}],
+            parameters: [{ $ref: '#/components/parameters/Path' }],
             requestBody: {
                 description: 'Optional description',
                 required: true,
